@@ -96,6 +96,21 @@ $r->post('/exercicio4/exibirtabuada', function(){
     return $tabuada;
 });
 
+# Exercício 5
+
+$r->get('/exercicio5/calcularfatorial', function(){
+    include("exercicio5.html");
+});
+
+$r->post('/exercicio5/calcularfatorial', function(){
+    $numero = $_POST["numero"];
+    $fatorial = 1;
+    for ($i = $numero; $i >= 1; $i--) {
+        $fatorial *= $i;
+    }
+    return "O fatorial de $numero é $fatorial";
+});
+
 #ROTAS
 
 $resultado = $r->handler();
