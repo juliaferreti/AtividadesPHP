@@ -81,6 +81,21 @@ $r->post('/exercicio3/calcularsoma', function(){
     }
 });
 
+# Exercício 4
+
+$r->get('/exercicio4/exibirtabuada', function(){
+    include("exercicio4.html");
+});
+
+$r->post('/exercicio4/exibirtabuada', function(){
+    $numero = $_POST["numero"];
+    $tabuada = "";
+    for ($i = 0; $i <= 10; $i++) {
+        $tabuada .= "$numero X $i = " . ($numero * $i) . "\n";
+    }
+    return $tabuada;
+});
+
 #ROTAS
 
 $resultado = $r->handler();
