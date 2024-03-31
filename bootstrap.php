@@ -64,6 +64,23 @@ $r->post('/exercicio2/imprimirvalor', function(){
     return "Menor valor: $menor, posição: $posicao";
 });
 
+# Exercício 3
+
+$r->get('/exercicio3/calcularsoma', function(){
+    include("exercicio3.html");
+});
+
+$r->post('/exercicio3/calcularsoma', function(){
+    $valor1 = $_POST["valor1"];
+    $valor2 = $_POST["valor2"];
+    $soma = $valor1 + $valor2;
+    if ($valor1 == $valor2) {
+        return "O triplo da soma é: " . ($soma * 3);
+    } else {
+        return "A soma é: $soma";
+    }
+});
+
 #ROTAS
 
 $resultado = $r->handler();
