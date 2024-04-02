@@ -111,6 +111,36 @@ $r->post('/exercicio5/calcularfatorial', function(){
     return "O fatorial de $numero é $fatorial";
 });
 
+# Exercício 6
+
+$r->get('/exercicio6/imprimirvalorcrescente', function(){
+    include("exercicio6.html");
+});
+
+$r->post('/exercicio6/imprimirvalorcrescente', function(){
+    $a = $_POST["a"];
+    $b = $_POST["b"];
+    if ($a < $b) {
+        return "$a $b";
+    } elseif ($a > $b) {
+        return "$b $a";
+    } else {
+        return "Números iguais: $a";
+    }
+});
+
+# Exercício 7
+
+$r->get('/exercicio7/convertermetrosemcentimentros', function(){
+    include("exercicio7.html");
+});
+
+$r->post('/exercicio7/convertermetrosemcentimentros', function(){
+    $metros = $_POST["metros"];
+    $centimetros = $metros * 100;
+    return "O valor em centímetros é: $centimetros";
+});
+
 #ROTAS
 
 $resultado = $r->handler();
