@@ -141,6 +141,58 @@ $r->post('/exercicio7/convertermetrosemcentimentros', function(){
     return "O valor em centímetros é: $centimetros";
 });
 
+# Exercício 8
+
+$r->get('/exercicio8/quantidadedelatasdetintaevalor', function(){
+    include("exercicio8.html");
+});
+
+$r->post('/exercicio8/quantidadedelatasdetintaevalor', function(){
+    $area = $_POST["area"];
+    $litros_tinta = ceil($area / 3);
+    $latas = ceil($litros_tinta / 18);
+    $preco_total = $latas * 80;
+    return "Quantidade de latas de tinta necessárias: $latas. Preço total: R$ $preco_total";
+});
+
+# Exercício 9
+
+$r->get('/exercicio9/formulariopessoa', function(){
+    include("exercicio9.html");
+});
+
+$r->post('/exercicio9/formulariopessoa', function(){
+    $ano_nascimento = $_POST["ano_nascimento"];
+    $ano_atual = date("Y");
+    $idade = $ano_atual - $ano_nascimento;
+    $dias_vividos = $idade * 365;
+    $idade_2025 = 2025 - $ano_nascimento;
+    return "Idade: $idade anos. Dias vividos: $dias_vividos dias. Idade em 2025: $idade_2025 anos";
+});
+
+# Exercício 10
+
+$r->get('/exercicio10/imcpessoa', function(){
+    include("exercicio10.html");
+});
+
+$r->post('/exercicio10/imcpessoa', function(){
+    $peso = $_POST["peso"];
+    $altura = $_POST["altura"];
+    $imc = $peso / ($altura * $altura);
+    if ($imc < 18.5) {
+        $condicao = "Abaixo do peso";
+    } elseif ($imc >= 18.5 && $imc < 24.9) {
+        $condicao = "Peso normal";
+    } elseif ($imc >= 24.9 && $imc < 29.9) {
+        $condicao = "Sobrepeso";
+    } else {
+        $condicao = "Obesidade";
+    }
+    echo "<h2>Seu IMC é: $imc</h2>";
+    echo "<p>Sua condição é: $condicao</p>";
+});
+
 #ROTAS
 
 $resultado = $r->handler();
